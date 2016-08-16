@@ -4,7 +4,7 @@ import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import 'normalize.css';
-// import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 console.log(Components);
 console.log(AppComponent);
@@ -12,7 +12,7 @@ console.log(Common);
 
 angular.module('app', [
     uiRouter,
-    // Common,
+    Common,
     Components
   ])
   .config(($locationProvider) => {
