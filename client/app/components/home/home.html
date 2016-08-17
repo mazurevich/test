@@ -5,8 +5,14 @@
 <main>
   <div>
     <uib-tab heading="Tab Heading" index="0">
-      Tab Content
+      <div class="container">
+        <input type="text" ng-model="search">
+        <p>{{ $ctrl.previewText}}</p>
+        <ul>
+          <li ng-repeat="feature in $ctrl.featuresList | filter:search">{{feature.name}} {{feature.description}}</li>
+        </ul>
+      </div>
     </uib-tab>
-    
+
   </div>
 </main>

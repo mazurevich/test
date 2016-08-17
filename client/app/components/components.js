@@ -3,11 +3,10 @@ import Home from './home/home';
 import About from './about/about';
 
 let componentModule = angular.module('app.components', [
-    Home
+    Home,
+    About
 ])
   
 .name;
-
-console.log(componentModule);
 
 export default componentModule;
