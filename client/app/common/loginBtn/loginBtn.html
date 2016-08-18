@@ -1,0 +1,2 @@
+<button ng-if="$ctrl.user.isSignedIn" type="button" ng-click="$ctrl.logOut()" class="btn btn-warn">Log Out</button>
+<button ng-if="!$ctrl.user.isSignedIn" type="button" ng-click="$ctrl.logIn()" class="btn btn-info">Log In</button>

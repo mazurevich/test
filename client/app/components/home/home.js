@@ -1,11 +1,13 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import homeComponent from './home.component';
-import Hero from './hero/hero';
+import hero from './hero/hero';
+import loginBtn from '../../common/loginBtn/loginBtn'; 
 
 let homeModule = angular.module('home', [
   uiRouter,
-  Hero
+  hero ,
+  loginBtn
 ])
   .config(($stateProvider, $urlRouterProvider) => {
     "ngInject";
