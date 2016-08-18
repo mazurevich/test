@@ -5,12 +5,13 @@ import Components from './components/components';
 import AppComponent from './app.component';
 import 'normalize.css';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import AngularAnimate from 'angular-animate';
 
 angular.module('app', [
     uiRouter,
     Common,
-    Components
+    Components,
+    AngularAnimate
 ])
     .config(($locationProvider) => {
         "ngInject";

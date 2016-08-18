@@ -1,2 +1,44 @@
-.home{
+$animaiton-time: 3s;
+
+.features-list{
+  list-style: none;
+}
+.feature{
+  color: #555;
+  display: flex;
+  font-style: italic;
+  padding: 10px;
+  img{
+    border-radius: 50%;
+  }
+  &-long{
+    font-size: 10px;
+  }
+  &-short{
+    font-size: 20px;
+  }
+  span{
+    align-self: center;
+    margin: 0 10px;
+  }
+  &.ng-enter{
+    transition: $animaiton-time ease all;
+    opacity: 0;
+    transform: translateX(-100%);
+    &.ng-enter-active{
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  &.ng-leave{
+    transition: $animaiton-time ease all;
+    opacity: 1;
+    transform: translateX(0);
+    &.ng-leave-active{
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  }
+
+
 }
