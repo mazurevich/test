@@ -1,4 +1,4 @@
-class MyButtonController {
+class difficultyButtonController {
   constructor($http) {
     const t = this;
     $http({
@@ -15,6 +15,6 @@ class MyButtonController {
   }
 }
 
-MyButtonController.$inject = ['$http'];
+difficultyButtonController.$inject = ['$http'];
 
-export default MyButtonController;
+export default difficultyButtonController;

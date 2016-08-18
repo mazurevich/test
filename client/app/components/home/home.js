@@ -1,10 +1,11 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import homeComponent from './home.component';
-// import Movies from '../movies/movies.component';
+import Hero from './hero/hero';
 
 let homeModule = angular.module('home', [
-  uiRouter
+  uiRouter,
+  Hero
 ])
   .config(($stateProvider, $urlRouterProvider) => {
     "ngInject";

@@ -1,16 +1,16 @@
-import MyButtonModule from './myButton'
-import MyButtonController from './myButton.controller';
-import MyButtonComponent from './myButton.component';
-import MyButtonTemplate from './myButton.html';
+import difficultyButtonModule from './difficultyButton'
+import difficultyButtonController from './difficultyButton.controller';
+import difficultyButtonComponent from './difficultyButton.component';
+import difficultyButtonTemplate from './difficultyButton.html';
 
-describe('MyButton', () => {
+describe('difficultyButton', () => {
   let $rootScope, makeController;
 
-  beforeEach(window.module(MyButtonModule));
+  beforeEach(window.module(difficultyButtonModule));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      return new MyButtonController();
+      return new difficultyButtonController();
     };
   }));
 
@@ -30,20 +30,20 @@ describe('MyButton', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has name in template [REMOVE]', () => {
-      expect(MyButtonTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+      expect(difficultyButtonTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
     });
   });
 
   describe('Component', () => {
       // component/directive specs
-      let component = MyButtonComponent;
+      let component = difficultyButtonComponent;
 
       it('includes the intended template',() => {
-        expect(component.template).to.equal(MyButtonTemplate);
+        expect(component.template).to.equal(difficultyButtonTemplate);
       });
 
       it('invokes the right controller', () => {
-        expect(component.controller).to.equal(MyButtonController);
+        expect(component.controller).to.equal(difficultyButtonController);
       });
   });
 });
