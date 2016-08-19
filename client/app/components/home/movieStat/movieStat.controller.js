@@ -1,6 +1,14 @@
 class MovieStatController {
-  constructor(movies) {
+  constructor(movies, $scope) {
     this.movies = movies.getMovies();
+    $scope.$watch('movies', function (...args) {
+      console.log('changed!', args);
+    }, true);
+
+  }
+
+  $onChange(){
+    console.log('on change');
   }
 
   getStat() {
@@ -22,6 +30,6 @@ class MovieStatController {
   }
 }
 
-MovieStatController.$inject = ['Movies'];
+MovieStatController.$inject = ['Movies', '$scope'];
 
 export default MovieStatController;

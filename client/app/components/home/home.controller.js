@@ -5,7 +5,7 @@ class HomeController {
     this.isDescriptionHidden = true;
     this.featuresList = [{
       name: 'Feature1',
-      description: 'bla!', 
+      description: 'bla!',
       imgSrc: 'http://placekitten.com/100/100'
     }, {
       name: 'Feature2',
@@ -22,6 +22,10 @@ class HomeController {
     }, ]
   }
 
+  $onInit() {
+    console.log('init home Ctrl');
+  }
+  
   addPerson() {
     const ctrl = this;
     this.featuresList.push({

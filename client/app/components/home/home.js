@@ -3,7 +3,7 @@ import uiRouter from 'angular-ui-router';
 import homeComponent from './home.component';
 import hero from './hero/hero';
 import movieList from './movieList/movieList';
-import movieStat from '../movieStat/movieStat';
+import movieStat from './movieStat/movieStat';
 
 let homeModule = angular.module('home', [
   uiRouter,

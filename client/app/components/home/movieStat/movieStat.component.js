@@ -4,7 +4,9 @@ import './movieStat.scss';
 
 let movieStatComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    movies: '<'
+  },
   template,
   controller
 };

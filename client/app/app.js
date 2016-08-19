@@ -7,6 +7,7 @@ import 'normalize.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import AngularAnimate from 'angular-animate';
 //asdfas
+
 angular.module('app', [
     uiRouter,
     Common,
