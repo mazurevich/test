@@ -8,25 +8,11 @@
   <div>
     <uib-tab heading="Tab Heading" index="0">
       <div class="container">
-        <login-btn></login-btn> 
-        
-        <!--<input type="text" ng-model="search" placeholder="search">
-        <button type="button" ng-if="$ctrl.isDescriptionHidden" ng-click="$ctrl.showDescr()">Show Description</button>
-        <button type="button" ng-if="!$ctrl.isDescriptionHidden"  ng-click="$ctrl.hideDescr()">Hide Description</button>
-        <ul class="features-list">
-          <li class="feature" ng-repeat="feature in $ctrl.featuresList | filter:search">
-            <img ng-src="{{feature.imgSrc}}" alt="{{feature.name}}">
-            <span>{{feature.name}}</span>
-            <span class="feature" ng-if="$ctrl.isDescriptionHidden" ng-class="{'feature-long': feature.description.length > 10,
-              'feature-short': feature.description.length > 10}"
-                                    >{{feature.description}}</span></li>
-        </ul>
-        <form ng-submit="$ctrl.addPerson()">
-          <input type="text" placeholder="name" id="name" name="name" ng-model="$ctrl.name">
-          <input type="text" placeholder="feature's description'" id="description" name="description" ng-model="$ctrl.description">
-          <button class="btn btn-success" type="submit">Add</button>
-
-        </form>-->
+        <div class="container">
+          <movie-stat></movie-stat>
+          <movie-list></movie-list>
+          <movie-stat></movie-stat>
+        </div>
       </div>
     </uib-tab>
 
