@@ -1,3 +1,30 @@
-.movieList{
-  
+
+
+.movie-list td{
+  vertical-align: middle !important;
 }
+
+tr.liked{
+  background-color: rgba(116, 255, 121, 0.3);
+}
+tr.disliked{
+  background-color: rgba(255, 5, 0, 0.3);
+}
+
+.btn-like span, .btn-dislike span{
+  transition: .2s;
+}
+
+
+.liked .btn-like span,
+.btn-like:hover span{
+  color: #ff473b;
+  transform: scale(1.2,1.2);
+}
+
+.disliked .btn-dislike span,
+.btn-dislike:hover span{
+  color: #1c1c1c;
+  transform: scale(1.2,1.2);
+}
+

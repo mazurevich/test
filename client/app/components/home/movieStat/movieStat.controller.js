@@ -1,13 +1,23 @@
 class MovieStatController {
-  constructor(movies) {
-    this.movies = movies.getMovies();
+  constructor($log, moviesSrv, $scope) {
+    this.moviesSrv = moviesSrv;
+    this.log = $log.log;
+    this.scope = $scope;
+    this.calcStat();
   }
 
-  $onChange(){
-    console.log('on change');
+  $onInit(...args) {
+    console.log(args);
+    this.moviesSrv.on('change', ()=>this.calcStat());
+    setTimeout(()=> {
+      console.log('it is 5sec after i initialised');
+      this.scope.$emit('message', {text: 'here i am!'});
+    }, 5000);
   }
 
-  getStat() {
+  calcStat() {
+    this.log('calcStat', (new Date()).getTime());
+    let movies = this.moviesSrv.getMovies();
     const ctrl = this;
     let res = {
       total: 0,
@@ -15,17 +25,16 @@ class MovieStatController {
       disliked: 0,
       unspecified: 0
     };
-    if (this.movies && this.movies.length > 0) {
-      res.total = ctrl.movies.length;
-      res.liked = ctrl.movies.filter(e => e.isLiked === true).length;
-      res.disliked = ctrl.movies.filter(e => e.isLiked === false).length;
-      res.unspecified = ctrl.movies.filter(e => e.isLiked === null).length
+    if (movies && movies.length > 0) {
+      res.total = movies.length;
+      res.liked = movies.filter(e => e.isLiked === true).length;
+      res.disliked = movies.filter(e => e.isLiked === false).length;
+      res.unspecified = movies.filter(e => e.isLiked === null).length
     }
     this.stat = res;
-    return res;
   }
 }
 
-MovieStatController.$inject = ['Movies'];
+MovieStatController.$inject = ['$log', 'Movies', '$scope'];
 
 export default MovieStatController;

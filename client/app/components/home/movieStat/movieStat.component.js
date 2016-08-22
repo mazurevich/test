@@ -3,10 +3,7 @@ import controller from './movieStat.controller';
 import './movieStat.scss';
 
 let movieStatComponent = {
-  restrict: 'E',
-  bindings: {
-    movies: '<'
-  },
+  bindings: {},
   template,
   controller
 };

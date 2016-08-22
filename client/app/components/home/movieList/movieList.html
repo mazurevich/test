@@ -1,8 +1,8 @@
 <div>
-  <table class="table">
+  <table class="table movie-list">
     <thead>
       <tr>
-        <th>{{}}Movie Name</th>
+        <th>Movie Name</th>
         <th>Director</th>
         <th>Genre</th>
         <th>Description</th>
@@ -11,36 +11,48 @@
     </thead>
     <tbody>
       <!--liked first-->
-      <tr ng-repeat="movie in $ctrl.movies | filter:{isLiked: true} ">
+      <tr ng-repeat="movie in $ctrl.movies.getMovies() | filter:{isLiked: true}" class="liked">
         <td>{{movie.name}}</td>
         <td>{{movie.director}}</td>
         <td>{{movie.genre}}</td>
         <td>{{movie.description}}</td>
         <td>
-          <button type="button" class="btn btn-warning" ng-click="$ctrl.upspecify(movie)">Unspecify</button>
-          <button type="button" class="btn btn-danger" ng-click="$ctrl.dislike(movie)">Dislike</button>
+          <button type="button" class="btn btn-link btn-like" ng-click="$ctrl.switchLike(movie)">
+            <span class="glyphicon glyphicon-heart"></span>
+          </button>
+          <button type="button" class="btn btn-link btn-dislike" ng-click="$ctrl.switchDislike(movie)">
+            <span class="glyphicon glyphicon-thumbs-down"></span>
+          </button>
         </td>
       </tr>
       <!--then unspecified-->
-      <tr ng-repeat="movie in $ctrl.movies | filter:{isLiked: null} ">
+      <tr ng-repeat="movie in $ctrl.movies.getMovies() | filter:{isLiked: null}" class="unspecified">
         <td>{{movie.name}}</td>
         <td>{{movie.director}}</td>
         <td>{{movie.genre}}</td>
         <td>{{movie.description}}</td>
         <td>
-          <button type="button" class="btn btn-success" ng-click="$ctrl.like(movie)">Like</button>
-          <button type="button" class="btn btn-danger" ng-click="$ctrl.dislike(movie)">Dislike</button>
+          <button type="button" class="btn btn-link btn-like" ng-click="$ctrl.switchLike(movie)">
+            <span class="glyphicon glyphicon-heart"></span>
+          </button>
+          <button type="button" class="btn btn-link btn-dislike" ng-click="$ctrl.switchDislike(movie)">
+            <span class="glyphicon glyphicon-thumbs-down"></span>
+          </button>
         </td>
       </tr>
       <!--then disliked-->
-      <tr ng-repeat="movie in $ctrl.movies | filter:{isLiked: false} ">
+      <tr ng-repeat="movie in $ctrl.movies.getMovies() | filter:{isLiked: false}" class="disliked">
         <td>{{movie.name}}</td>
         <td>{{movie.director}}</td>
         <td>{{movie.genre}}</td>
         <td>{{movie.description}}</td>
         <td>
-          <button type="button" class="btn btn-success" ng-click="$ctrl.like(movie)">Like</button>
-          <button type="button" class="btn btn-warning" ng-click="$ctrl.upspecify(movie)">Unspecify</button>
+          <button type="button" class="btn btn-link btn-like" ng-click="$ctrl.switchLike(movie)">
+            <span class="glyphicon glyphicon-heart"></span>
+          </button>
+          <button type="button" class="btn btn-link btn-dislike" ng-click="$ctrl.switchDislike(movie)">
+            <span class="glyphicon glyphicon-thumbs-down"></span>
+          </button>
         </td>
       </tr>
     </tbody>
