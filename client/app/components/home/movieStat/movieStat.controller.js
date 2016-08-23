@@ -27,6 +27,7 @@ class MovieStatController {
       res.unspecified = movies.filter(e => e.isLiked === null).length
     }
     this.stat = res;
+    return res;
   }
 }
 

@@ -1,6 +1,14 @@
 class LoginController {
   constructor() {
-    this.name = 'login';
+    this.user = {};
+  }
+
+  login(user){
+    console.log('checking user');
+    if (this.form.$valid)
+      console.log('submitting user', user);
+    else
+      return false;
   }
 }
 
