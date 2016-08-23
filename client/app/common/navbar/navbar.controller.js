@@ -1,7 +1,12 @@
 class NavbarController {
   constructor() {
-    this.name = 'navbar';
+    this.isToggled = false;
   }
+
+  toggleMenu(){
+    this.isToggled = !this.isToggled;
+  }
+
 }
 
 export default NavbarController;

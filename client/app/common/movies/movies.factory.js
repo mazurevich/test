@@ -23,7 +23,7 @@ let MoviesFactory = function ($interval) {
   }
 
   let getMovies = () => {
-    console.log(`getting movies, ${(new Date).getTime()}`);
+    // console.log(`getting movies, ${(new Date).getTime()}`);
     return movies;
   };
   function on(eventName, callback) {

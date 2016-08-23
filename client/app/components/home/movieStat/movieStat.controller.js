@@ -7,12 +7,7 @@ class MovieStatController {
   }
 
   $onInit(...args) {
-    console.log(args);
     this.moviesSrv.on('change', ()=>this.calcStat());
-    setTimeout(()=> {
-      console.log('it is 5sec after i initialised');
-      this.scope.$emit('message', {text: 'here i am!'});
-    }, 5000);
   }
 
   calcStat() {
