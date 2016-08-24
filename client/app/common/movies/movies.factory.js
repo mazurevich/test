@@ -19,7 +19,7 @@ let MoviesFactory = function ($interval) {
   };
 
   for (let i = 0; i < ITEMS_NUMBER; i++) {
-    movies.push(new Movie(`name${i}`, `director${i}`, getRandomGenre(), 'lorem30)'));
+    movies.push(new Movie(i, `name${i}`, `director${i}`, getRandomGenre(), 'lorem30)'));
   }
 
   let getMovies = () => {
@@ -45,7 +45,10 @@ let MoviesFactory = function ($interval) {
       movies[index] = newMovie;
       trigger('change', newMovie);
     }
+  }
 
+  function getMovieById(id) {
+    return movies.find(movie => movie.id == id);
   }
 
 
@@ -64,7 +67,7 @@ let MoviesFactory = function ($interval) {
   // };
   // $interval(setRandomRank, UPDATE_INTERVAL);
 
-  return { getMovies ,on, trigger, updateMovie };
+  return { getMovies, getMovieById, on, trigger, updateMovie };
 };
 
 MoviesFactory.$inject=['$interval'];

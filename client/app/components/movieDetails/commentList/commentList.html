@@ -1,0 +1,17 @@
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Author</th>
+			<th>Text</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="comment in $ctrl.comments">
+			<td>{{comment.author}}</td>
+      <td>{{comment.text}}</td>
+		</tr>
+	</tbody>
+</table>
+<div class="col-md-12">
+  <a ui-sref="movieDetails({id: $ctrl.id})" class="btn btn-info" >Hide Comments</a>
+</div>

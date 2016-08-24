@@ -1,17 +1,18 @@
 class MovieListController {
-  constructor(movies) {
-    this.movies = movies;
+  constructor(moviesSrv) {
+    this.moviesSrv = moviesSrv;
+    this.movies = moviesSrv.getMovies();
     //dsfa
   }
 
   switchLike(movie){
     movie.isLiked = movie.isLiked===true? null: true;
-    this.movies.updateMovie(movie, movie);
+    this.moviesSrv.updateMovie(movie, movie);
 
   }
   switchDislike(movie){
     movie.isLiked = movie.isLiked===false? null: false;
-    this.movies.updateMovie(movie, movie);
+    this.moviesSrv.updateMovie(movie, movie);
   }
 }
 

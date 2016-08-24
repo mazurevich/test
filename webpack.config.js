@@ -33,7 +33,7 @@ module.exports = {
     //   minimize: true,
     //   sourceMap: true,
     //   output: {
-    //     comments: false
+    //     commentList: false
     //   },
     //   compressor: {
     //     warnings: false

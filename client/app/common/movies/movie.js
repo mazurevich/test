@@ -1,6 +1,7 @@
-class Movie{
-  constructor(name, director, genre, description){
+class Movie {
+  constructor(id, name, director, genre, description) {
     Object.assign(this, {name, director, genre, description});
+    this.id = id;
     this.isLiked = null;
   }
 }
