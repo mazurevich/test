@@ -1,8 +1,8 @@
 class MovieDetailsController {
-  constructor($stateParams, moviesSrv) {
+  constructor($stateParams, Movies) {
     "ngInject";
-    this.moviesSrv = moviesSrv;
-    this.movie = moviesSrv.getMovieById($stateParams.id);
+    this.moviesSrv = Movies;
+    this.movie = Movies.getMovieById($stateParams.id);
   }
 }
 

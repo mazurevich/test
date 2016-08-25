@@ -1,8 +1,8 @@
 class CommentListController {
-  constructor(commentsSrv, $stateParams) {
+  constructor(Comments, $stateParams) {
     "ngInject";
     this.id = $stateParams.id;
-    this.comments = commentsSrv.getCommentsByMovieId(this.id);
+    this.comments = Comments.getCommentsByMovieId(this.id);
   }
 }
 
