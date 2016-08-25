@@ -15,8 +15,10 @@ angular.module('app', [
     Components,
     AngularAnimate
 ])
-    .config(($locationProvider) => {
+    .config(($locationProvider, $stateProvider) => {
         "ngInject";
+        console.log($stateProvider);
+        
         // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
         // #how-to-configure-your-server-to-work-with-html5mode
         $locationProvider.html5Mode(true).hashPrefix('!');

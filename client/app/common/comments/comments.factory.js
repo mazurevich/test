@@ -1,12 +1,13 @@
 import Comment from './comment';
 
 
-let CommentFactory = function (moviesSrv) {
+let CommentFactory = function (Movies) {
+  "ngInject";
   const comments = [];
 
   let currentId = 0;
 
-  let movies = moviesSrv.getMovies();
+  let movies = Movies.getMovies();
 
   for (let i = 0; i < movies.length; i++) {
 
@@ -21,7 +22,5 @@ let CommentFactory = function (moviesSrv) {
 
   return {getCommentsByMovieId};
 };
-
-CommentFactory.$inject = ['Movies']
 
 export default CommentFactory;

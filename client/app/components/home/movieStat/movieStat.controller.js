@@ -1,17 +1,11 @@
 class MovieStatController {
-  constructor($log, moviesSrv, $scope) {
-    this.moviesSrv = moviesSrv;
-    this.log = $log.log;
-    this.scope = $scope;
+  constructor(Movies) {
+    "ngInject";
+    this.moviesSrv = Movies;
     this.calcStat();
   }
 
-  $onInit(...args) {
-    this.moviesSrv.on('change', ()=>this.calcStat());
-  }
-
   calcStat() {
-    this.log('calcStat', (new Date()).getTime());
     let movies = this.moviesSrv.getMovies();
     const ctrl = this;
     let res = {
@@ -26,11 +20,8 @@ class MovieStatController {
       res.disliked = movies.filter(e => e.isLiked === false).length;
       res.unspecified = movies.filter(e => e.isLiked === null).length
     }
-    this.stat = res;
-    return res;
+    this.stats = res;
   }
 }
-
-MovieStatController.$inject = ['$log', 'Movies', '$scope'];
 
 export default MovieStatController;

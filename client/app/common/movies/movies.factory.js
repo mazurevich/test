@@ -5,6 +5,7 @@ const UPDATE_INTERVAL = 1000;
 
 
 let MoviesFactory = function ($interval) {
+  "ngInject";
   const movies = [];
 
   const events = {
@@ -51,25 +52,7 @@ let MoviesFactory = function ($interval) {
     return movies.find(movie => movie.id == id);
   }
 
-
-  // const getRandomRank = function () {
-  //   switch (Math.floor(Math.random() *3)) {
-  //     case 0:
-  //       return false;
-  //     case 1:
-  //       return true;
-  //     case 2:
-  //       return null;
-  //   }
-  // };
-  // const setRandomRank = function () {
-  //   movies.forEach((el)=> el.isLiked = getRandomRank())
-  // };
-  // $interval(setRandomRank, UPDATE_INTERVAL);
-
   return { getMovies, getMovieById, on, trigger, updateMovie };
 };
-
-MoviesFactory.$inject=['$interval'];
 
 export default MoviesFactory;
