@@ -4,8 +4,8 @@ import MoviesFactory from './movies.factory';
 
 let moviesModule = angular.module('movies', [])
 
-.factory('Movies', MoviesFactory)
-  
+.factory('moviesService', MoviesFactory)
+
 .name;
 
 export default moviesModule;

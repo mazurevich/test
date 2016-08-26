@@ -8,8 +8,8 @@ let navbarModule = angular.module('navbar', [
   loginBtn
 ])
 
-.component('navbar', navbarComponent)
-  
-.name;
+  .component('navbar', navbarComponent)
+
+  .name;
 
 export default navbarModule;

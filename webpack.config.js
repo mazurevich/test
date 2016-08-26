@@ -27,7 +27,7 @@ module.exports = {
       hash: true
     }),
 
-    new webpack.optimize.UglifyJsPlugin({
+    // new webpack.optimize.UglifyJsPlugin({
       // cacheFolder: path.resolve(__dirname, 'public/cached_uglify/'),
       // debug: true,
       // minimize: true,
@@ -35,10 +35,10 @@ module.exports = {
       // output: {
       //   commentList: false
       // },
-      compressor: {
-        warnings: false
-      }
-    }),
+    //   compressor: {
+    //     warnings: false
+    //   }
+    // }),
 
     // Automatically move all modules defined outside of application directory to vendor bundle.
     // If you are using more complicated project structure, consider to specify common chunks manually.

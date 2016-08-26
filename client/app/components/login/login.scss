@@ -4,4 +4,15 @@
   border: 1px solid lightgray;
   border-radius: 5px;
   padding-bottom: 20px;
+  &__btns{
+    text-align: center;
+  }
+}
+
+.login-header{
+  background-color: #f5f1f1;
+  h2{
+    text-align: center;
+    color: #7b7a7a;
+  }
 }

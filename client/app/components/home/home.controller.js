@@ -1,10 +1,8 @@
 class HomeController {
 
-  constructor($scope) {
+  constructor() {
   }
-
 
 }
 
-HomeController.$inject = ['$scope'];
 export default HomeController;

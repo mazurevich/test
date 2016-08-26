@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
-    <form class="col-md-6 col-md-offset-3 login-form" name="$ctrl.form"
+    <form class="col-md-4 col-md-offset-4 login-form" name="$ctrl.form"
           ng-submit="$ctrl.login($ctrl.user)">
-      <div class="form-group" >
-        <h2>Login form</h2>
+
+      <div class="form-group login-header row">
+        <h2 class="col-md-12">Login form</h2>
       </div>
       <div class="form-group">
         <label for="login">Login</label>
@@ -15,8 +16,9 @@
         <input type="password" class="form-control" id="password"
                placeholder="Password" required="true" ng-model="$ctrl.user.password">
       </div>
-      <input type="submit" class="btn btn-info" value="Submit">
-
+      <div class="login-form__btns">
+        <input type="submit" class="btn btn-info" value="Submit">
+      </div>
     </form>
   </div>
 </div>

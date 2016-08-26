@@ -1,26 +1,34 @@
 class MovieStatController {
-  constructor(Movies) {
+  constructor(moviesService, $scope) {
     "ngInject";
-    this.moviesSrv = Movies;
+
+    let vm = this;
+    Object.assign(this, { total: 0, liked: 0, disliked: 0, unspecified: 0 } );
+
+    $scope.$watch('$ctrl.movies', function (data) {
+      vm.calcStat();
+    }, true);
+
+
+    this.moviesSrv = moviesService;
     this.calcStat();
+    this.movies = this.moviesSrv.getMovies();
   }
 
   calcStat() {
+    let vm = this;
     let movies = this.moviesSrv.getMovies();
-    const ctrl = this;
-    let res = {
-      total: 0,
-      liked: 0,
-      disliked: 0,
-      unspecified: 0
-    };
+
     if (movies && movies.length > 0) {
-      res.total = movies.length;
-      res.liked = movies.filter(e => e.isLiked === true).length;
-      res.disliked = movies.filter(e => e.isLiked === false).length;
-      res.unspecified = movies.filter(e => e.isLiked === null).length
+      vm.total = movies.length;
+      vm.liked = movies.filter(e => e.isLiked === true).length;
+      vm.disliked = movies.filter(e => e.isLiked === false).length;
+      vm.unspecified = movies.filter(e => e.isLiked === null).length
     }
-    this.stats = res;
+  }
+
+  refresh() {
+    this.movies = this.moviesSrv.getMovies();
   }
 }
 

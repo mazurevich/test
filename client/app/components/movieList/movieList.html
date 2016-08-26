@@ -3,20 +3,17 @@
     <thead>
     <tr>
       <th>Movie Name</th>
-      <th>Director</th>
-      <th>Genre</th>
-      <th>Description</th>
+      <th>Year</th>
+      <th>Type</th>
       <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <!--liked first-->
     <tr ng-repeat="movie in $ctrl.movies | filter:{isLiked: true}" class="liked">
-      <td><a href="/movie/{{movie.id}}">{{movie.name}}</a></td>
-      <td>{{movie.director}}</td>
-      <td>{{movie.genre}}</td>
-      <!--asdfas-->
-      <td>{{movie.description}}</td>
+      <td><a href="/movie/{{movie.imdbID}}">{{movie.Title}}</a></td>
+      <td>{{movie.Year}}</td>
+      <td>{{movie.Type}}</td>
       <td>
         <button type="button" class="btn btn-link btn-like" ng-click="$ctrl.switchLike(movie)">
           <span class="glyphicon glyphicon-heart"></span>
@@ -28,10 +25,9 @@
     </tr>
     <!--then unspecified-->
     <tr ng-repeat="movie in $ctrl.movies | filter:{isLiked: null}" class="unspecified">
-      <td><a ui-sref="movieDetails({id: movie.id})">{{movie.name}}</a></td>
-      <td>{{movie.director}}</td>
-      <td>{{movie.genre}}</td>
-      <td>{{movie.description}}</td>
+      <td><a href="/movie/{{movie.imdbID}}">{{movie.Title}}</a></td>
+      <td>{{movie.Year}}</td>
+      <td>{{movie.Type}}</td>
       <td>
         <button type="button" class="btn btn-link btn-like" ng-click="$ctrl.switchLike(movie)">
           <span class="glyphicon glyphicon-heart"></span>
@@ -43,10 +39,9 @@
     </tr>
     <!--then disliked-->
     <tr ng-repeat="movie in $ctrl.movies | filter:{isLiked: false}" class="disliked">
-      <td><a href="/movie/{{movie.id}}">{{movie.name}}</a></td>
-      <td>{{movie.director}}</td>
-      <td>{{movie.genre}}</td>
-      <td>{{movie.description}}</td>
+      <td><a href="/movie/{{movie.imdbID}}">{{movie.Title}}</a></td>
+      <td>{{movie.Year}}</td>
+      <td>{{movie.Type}}</td>
       <td>
         <button type="button" class="btn btn-link btn-like" ng-click="$ctrl.switchLike(movie)">
           <span class="glyphicon glyphicon-heart"></span>

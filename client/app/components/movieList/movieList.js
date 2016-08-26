@@ -7,12 +7,15 @@ let movieListModule = angular.module('movieList', [
   uiRouter,
   movies
 ])
-  .config(($stateProvider) => {
+  .config(($stateProvider, $locationProvider) => {
     "ngInject";
 
     $stateProvider.state('movies', {
       url: '/movies',
-      component: 'movieList'
+      component: 'movieList',
+      data: {
+        requiresAuth: true
+      }
     })
   })
 

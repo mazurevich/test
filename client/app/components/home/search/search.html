@@ -1,0 +1,35 @@
+<form class="col-md-12 form-inline form-horizontal" ng-submit="$ctrl.search($ctrl.searchParam)">
+  <div class="form-group">
+    <label for="search" class="control-label">Search: </label>
+    <input type="text" id="search" class="form-control" ng-model="$ctrl.searchParam" placeholder="e.g.: avengers, thor">
+    <button type="submit" class="btn btn-info">Search</button>
+
+    <span class="alert alert-warning" ng-if="$ctrl.searchResults.length == 0">No search results</span>
+  </div>
+</form>
+<div class="row" ng-if="$ctrl.searchResults.length > 0">
+  <div class="col-md-12">
+
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Type</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="movie in $ctrl.searchResults">
+        <td>{{movie.Title}}</td>
+        <td>{{movie.Year}}</td>
+        <td>{{movie.Type}}</td>
+        <td>
+          <button class="btn btn-success" ng-hide="$ctrl.movieIsInCollection(movie)" ng-click="$ctrl.addToCollection(movie)">Add to collection</button>
+          <button class="btn btn-danger" ng-show="$ctrl.movieIsInCollection(movie)" ng-click="$ctrl.removeFromCollection(movie)">Remove from collection</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
