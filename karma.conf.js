@@ -1,72 +1,76 @@
-// Karma configuration
-// Generated on Mon Aug 29 2016 12:48:08 GMT+0300 (Belarus Standard Time)
-
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
-
-    // base path that will be used to resolve all patterns (eg. files, exclude)
+    // base path used to resolve all patterns
     basePath: '',
-
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'chai'],
 
-
-    // list of files / patterns to load in the browser
+    // list of files/patterns to load in the browser
     files: [
-      'app/**/*.spec.js',
-      '/client/app/**/*.spec.js',
-      '/client/**/*spec.js',
-      '**/*spec.js'
+      'node_modules/babel-polyfill/dist/polyfill.js',
+      {pattern: 'spec.bundle.js', watched: false}
     ],
 
+    // files to exclude
+    exclude: [],
 
-    // list of files to exclude
-    exclude: [
+    plugins: [
+      require("karma-chai"),
+      require("karma-phantomjs-launcher"),
+      require("karma-mocha"),
+      require("karma-mocha-reporter"),
+      require("karma-sourcemap-loader"),
+      require("karma-webpack")
     ],
-
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
+    preprocessors: {'spec.bundle.js': ['webpack', 'sourcemap']},
+
+    webpack: {
+      devtool: 'inline-source-map',
+      module: {
+
+        loaders: [
+          {test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'babel'},
+          {test: /\.html$/, loader: 'raw'},
+          {test: /\.scss$/, loaders: ["style", "css", "sass"]},
+          {test: /\.css$/, loaders: ["style", "css"]},
+          {test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
+          {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
+          {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
+          {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'}
+        ]
+      }
     },
 
+    webpackServer: {
+      noInfo: true // prevent console spamming when running in Karma!
+    },
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
-
+    reporters: ['mocha'],
 
     // web server port
     port: 9876,
 
-
-    // enable / disable colors in the output (reporters and logs)
+    // enable colors in the output
     colors: true,
-
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
-
-    // enable / disable watching file and executing tests whenever any file changes
+    // toggle whether to watch files and rerun tests upon incurring changes
     autoWatch: true,
-
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS', 'Chrome'],
+    browsers: ['PhantomJS'],
 
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
-
-    // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: Infinity
-  })
+    // if true, Karma runs tests once and exits
+    singleRun: false
+  });
 };

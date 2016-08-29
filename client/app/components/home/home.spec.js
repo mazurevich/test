@@ -31,9 +31,7 @@ describe('Home', () => {
       });
     });
 
-    it('has a name property', () => { // erase if removing this.name from the controller
-      expect(controller).to.have.property('name');
-    });
+
   });
 
   describe('View', () => {
@@ -46,9 +44,7 @@ describe('Home', () => {
       scope.$apply();
     });
 
-    it('has name in template', () => {
-      expect(template.find('h1').html()).to.eq('Found in home.html');
-    });
+
 
   });
 });

@@ -1,16 +1,8 @@
-import Movie from './movie';
-
-const ITEMS_NUMBER = 20;
-const UPDATE_INTERVAL = 1000;
-
-
-let MoviesFactory = function ($interval, $http, $q, localStorageService) {
+let MoviesFactory = function ($http, $q, localStorageService) {
   "ngInject";
   let movies = [];
 
-  const events = {
-    //eventName: [subscribers];
-  };
+  const events = {};
 
   movies = extractFromLS();
 
@@ -21,8 +13,6 @@ let MoviesFactory = function ($interval, $http, $q, localStorageService) {
     contains,
     getMovies,
     getMovieById,
-    on,
-    trigger,
     getMoviesInfo,
     getMovieFullInfo
   };
@@ -32,49 +22,34 @@ let MoviesFactory = function ($interval, $http, $q, localStorageService) {
     return movies;
   }
 
+  function _saveToLs() {
+    localStorageService.set('movies', movies);
+  }
+
   function addMovie(movie) {
     if (!movies.some(m=> m.imdbID == movie.imdbID)) {
       movies.push(Object.assign({isLiked: null}, movie));
-      trigger('change', movie);
-      saveToLs();
+      _saveToLs();
     }
-  }
-
-  function saveToLs() {
-    localStorageService.set('movies', movies);
   }
 
   function removeMovie(movie) {
     let item = movies.find(m=> m.imdbID == movie.imdbID);
     if (item) {
-      movies.splice(movies.indexOf(item),1);
+      movies.splice(movies.indexOf(item), 1);
     }
+    _saveToLs();
   }
 
   function contains(movie) {
-    return  movies.some(m=> m.imdbID == movie.imdbID);
-  }
-
-  function on(eventName, callback) {
-    if (!events[eventName])
-      events[eventName] = [];
-
-    events[eventName].push(callback);
-  }
-
-  function trigger(eventName, ...args) {
-    if (events[eventName] && events[eventName].length > 0)
-      for (event of events[eventName])
-        if (typeof event === 'function')
-          event(...args);
+    return movies.some(m=> m.imdbID == movie.imdbID);
   }
 
   function updateMovie(oldMovie, newMovie) {
     let index = movies.indexOf(oldMovie);
     if (index > -1) {
       movies[index] = newMovie;
-      trigger('change', newMovie);
-      saveToLs();
+      _saveToLs();
     }
   }
 
@@ -86,7 +61,6 @@ let MoviesFactory = function ($interval, $http, $q, localStorageService) {
     let result = localStorageService.get('movies');
     return result || [];
   }
-
 
   function getMoviesInfo(...names) {
     let promises = names.map(name =>
@@ -118,6 +92,7 @@ let MoviesFactory = function ($interval, $http, $q, localStorageService) {
     function extract(response) {
       return response.data
     }
+
     function addInfo(movie) {
       return Object.assign(movie, getMovieById(movie.imdbID));
     }
