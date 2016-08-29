@@ -1,11 +1,12 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import movieListComponent from './movieList.component';
-import movies from '../../common/movies/movies';
+import common from '../../common/common';
+
 
 let movieListModule = angular.module('movieList', [
   uiRouter,
-  movies
+  common
 ])
   .config(($stateProvider, $locationProvider) => {
     "ngInject";

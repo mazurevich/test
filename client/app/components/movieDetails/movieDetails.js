@@ -16,7 +16,26 @@ let movieDetailsModule = angular.module('movieDetails', [
     $stateProvider
       .state('movieDetails', {
         url: '/movie/:id',
-        component: 'movieDetails'
+        component: 'movieDetails',
+        resolve: {
+          delay: function ($timeout, $q) {
+            "ngInject"
+            let deferred = $q.defer();
+
+            $timeout(()=> {
+              console.log('resolved');
+              deferred.resolve('123')
+            }, 300);
+
+            return deferred.promise;
+          },
+          movie: function ($stateParams, moviesService) {
+            "ngInject"
+            console.log($stateParams.id);
+            return moviesService.getMovieFullInfo($stateParams.id);
+
+          }
+        }
       })
   })
 

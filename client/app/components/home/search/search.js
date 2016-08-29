@@ -1,9 +1,11 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import searchComponent from './search.component';
+import common from '../../../common/common'
 
 let searchModule = angular.module('search', [
-  uiRouter
+  uiRouter,
+  common
 ])
 
 .component('search', searchComponent)

@@ -1,19 +1,84 @@
 <div class="row">
   <div class="col-md-12">
-    <div class="jumbotron">
-      <div class="container">
-        <div class="col-md-5">
-          <img src="http://placekitten.com/300/400" alt="">
-        </div>
-        <div class="col-md-7">
-          <h1>{{$ctrl.movie.name}}</h1>
-          <p>{{$ctrl.movie.description}}</p>
+    <div ng-if="$ctrl.movie.Response=='True'" class="row">
 
-          <p ng-if="$ctrl.movie.isLiked">I Liked it</p>
-          <a ui-sref="movieDetails.comments" class="btn btn-info">Show CommentsList</a>
+      <!--ng-class="{'alert-success': '$ctrl.movie.isLiked===true', 'alert-danger': '$ctrl.movie.isLiked===false',}"-->
+
+
+      <div class="col-md-4">
+        <div class="alert poster"
+             ng-class="{ 'alert-success': $ctrl.movie.isLiked===true, 'alert-danger': $ctrl.movie.isLiked===false, 'alert-info': $ctrl.movie.isLiked===null}">
+          <img ng-src="{{$ctrl.movie.Poster}}" src="http://placekitten.com/300/400" alt="">
         </div>
-        <br>
       </div>
+      <div class="col-md-8">
+        <table class="table table-hover movie-info-table">
+          <tbody>
+          <tr>
+            <td>Title:</td>
+            <td>{{$ctrl.movie.Title}}</td>
+          </tr>
+          <tr>
+            <td>Year:</td>
+            <td>{{$ctrl.movie.Year}}</td>
+          </tr>
+          <tr>
+            <td>Rated:</td>
+            <td>{{$ctrl.movie.Rated}}</td>
+          </tr>
+          <tr>
+            <td>Released:</td>
+            <td>{{$ctrl.movie.Released}}</td>
+          </tr>
+          <tr>
+            <td>Runtime:</td>
+            <td>{{$ctrl.movie.Runtime}}</td>
+          </tr>
+          <tr>
+            <td>Genre:</td>
+            <td>{{$ctrl.movie.Genre}}</td>
+          </tr>
+          <tr>
+            <td>Director:</td>
+            <td>{{$ctrl.movie.Director}}</td>
+          </tr>
+          <tr>
+            <td>Writer:</td>
+            <td>{{$ctrl.movie.Writer}}</td>
+          </tr>
+          <tr>
+            <td>Actors:</td>
+            <td>{{$ctrl.movie.Actors}}</td>
+          </tr>
+          <tr>
+            <td>Plot:</td>
+            <td>{{$ctrl.movie.Plot}}</td>
+          </tr>
+          <tr>
+            <td>Rating:</td>
+            <td>{{$ctrl.movie.imdbRating}}</td>
+          </tr>
+          <tr>
+            <td>Awards:</td>
+            <td>{{$ctrl.movie.Awards}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <h1>{{$ctrl.movie.name}}</h1>
+        <p>{{$ctrl.movie.description}}</p>
+
+        <a ui-sref="movieDetails.comments" class="btn btn-info">Show CommentsList</a>
+      </div>
+      <br>
+    </div>
+  </div>
+  <div class="jumbotron" ng-if="$ctrl.movie.Response=='False'">
+    <div class="container">
+      <h1>404!</h1>
+      <p>Sorry, movie wasn't found</p>
+      <!--<p>-->
+      <!--<a class="btn btn-primary btn-lg">Learn more</a>-->
+      <!--</p>-->
     </div>
   </div>
   <div class="col-md-12" ui-view>

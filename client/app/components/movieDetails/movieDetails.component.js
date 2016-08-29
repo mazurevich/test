@@ -3,7 +3,10 @@ import controller from './movieDetails.controller';
 import './movieDetails.scss';
 
 let movieDetailsComponent = {
-  bindings: {},
+  bindings: {
+    delay: '<',
+    movie: '<'
+  },
   template,
   controller
 };

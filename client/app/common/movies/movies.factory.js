@@ -23,7 +23,8 @@ let MoviesFactory = function ($interval, $http, $q, localStorageService) {
     getMovieById,
     on,
     trigger,
-    getMoviesInfo
+    getMoviesInfo,
+    getMovieFullInfo
   };
 
 
@@ -105,6 +106,20 @@ let MoviesFactory = function ($interval, $http, $q, localStorageService) {
       return results.reduce((prev, current) => {
         return prev.concat(current)
       });
+    }
+
+  }
+
+  function getMovieFullInfo(imdbID) {
+    return $http.get(`http://www.omdbapi.com/?i=${imdbID}&plot=full&r=json`)
+      .then(extract)
+      .then(addInfo);
+
+    function extract(response) {
+      return response.data
+    }
+    function addInfo(movie) {
+      return Object.assign(movie, getMovieById(movie.imdbID));
     }
 
   }

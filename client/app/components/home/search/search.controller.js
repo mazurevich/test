@@ -14,20 +14,7 @@ class SearchController {
     );
 
   }
-  addToCollection(movie){
-    let vm = this;
-    vm.moviesService.addMovie(movie);
-  }
 
-  movieIsInCollection(movie){
-    let vm = this;
-    return vm.moviesService.contains(movie);
-  }
-
-  removeFromCollection(movie){
-    let vm = this;
-    vm.moviesService.removeMovie(movie);
-  }
 }
 
 export default SearchController;

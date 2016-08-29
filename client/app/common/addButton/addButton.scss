@@ -1,0 +1,17 @@
+.btn-movie {
+  &:hover span{
+    transform: scale(1.2, 1.2);
+  }
+  span {
+    transform-origin: center center;
+    transition: .2s all ease-in;
+  }
+}
+
+.btn-add-movie span{
+  color: green;
+}
+
+.btn-remove-movie span{
+  color: red;
+}

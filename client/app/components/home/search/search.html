@@ -25,8 +25,9 @@
         <td>{{movie.Year}}</td>
         <td>{{movie.Type}}</td>
         <td>
-          <button class="btn btn-success" ng-hide="$ctrl.movieIsInCollection(movie)" ng-click="$ctrl.addToCollection(movie)">Add to collection</button>
-          <button class="btn btn-danger" ng-show="$ctrl.movieIsInCollection(movie)" ng-click="$ctrl.removeFromCollection(movie)">Remove from collection</button>
+          <add-button movie="movie" ></add-button>
+          <!--<button class="btn btn-success" ng-hide="$ctrl.movieIsInCollection(movie)" ng-click="$ctrl.addToCollection(movie)">Add to collection</button>-->
+          <!--<button class="btn btn-danger" ng-show="$ctrl.movieIsInCollection(movie)" ng-click="$ctrl.removeFromCollection(movie)">Remove from collection</button>-->
         </td>
       </tr>
       </tbody>

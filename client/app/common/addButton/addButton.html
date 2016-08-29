@@ -1,0 +1,8 @@
+<button class="btn btn-link btn-movie btn-add-movie" ng-hide="$ctrl.movieIsInCollection()" ng-click="$ctrl.addToCollection()"
+        title="Add to collection">
+  <span class="glyphicon glyphicon-plus"></span>
+</button>
+<button class="btn btn-link btn-movie btn-remove-movie" ng-show="$ctrl.movieIsInCollection()" ng-click="$ctrl.removeFromCollection()"
+        title="Remove from collection">
+  <span class="glyphicon glyphicon-minus"></span>
+</button>
