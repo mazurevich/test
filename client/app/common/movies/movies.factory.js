@@ -1,4 +1,5 @@
 let MoviesFactory = function ($http, $q, localStorageService) {
+  // console.log(`http: ${$http} , q: ${$q}, localStorage: ${localStorageService}`);
   "ngInject";
   let movies = [];
 
@@ -16,7 +17,6 @@ let MoviesFactory = function ($http, $q, localStorageService) {
     getMoviesInfo,
     getMovieFullInfo
   };
-
 
   function getMovies() {
     return movies;

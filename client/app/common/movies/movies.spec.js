@@ -4,14 +4,13 @@ import Movies from './movies';
 
 describe('Testing movies service', function () {
 
-  let $rootScope, $state, $location, movies,
-    $componentController, $compile, $http, $q, localStorageService, spy;
+  let  movies,$http, $q, localStorageService;
 
   beforeEach(angular.mock.module(Movies));
 
   beforeEach(inject((_$http_, _$q_) => {
     $http = _$http_;
-    $http = _$q_;
+    $q = _$q_;
     localStorageService = {
       set(a, b){
 
@@ -98,6 +97,24 @@ describe('Testing movies service', function () {
       expect(localStorageService.set).toHaveBeenCalled();
     });
   });
+
+  describe('http requests', () => {
+
+    beforeEach(()=>{
+      let defered = $q.defer();
+      defered.resolve('asdf');
+
+      spyOn($http, 'get').and.returnValue(defered.promise);
+    });
+
+    it('getMoviesInfo return a promise', () => {
+      // debugger;
+      let result = movies.getMoviesInfo('thor');
+      expect(result.then).toBeDefined();
+      expect($http.set).toHaveBeenCalled();
+    })
+
+  })
 
 });
 
