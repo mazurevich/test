@@ -45,10 +45,10 @@ let MoviesFactory = function ($http, $q, localStorageService) {
     return movies.some(m=> m.imdbID == movie.imdbID);
   }
 
-  function updateMovie(oldMovie, newMovie) {
+  function updateMovie(oldMovie, newMovieProps) {
     let index = movies.indexOf(oldMovie);
     if (index > -1) {
-      movies[index] = newMovie;
+      movies[index] = Object.assign({}, oldMovie, newMovieProps);
       _saveToLs();
     }
   }

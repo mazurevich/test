@@ -12,6 +12,7 @@ import angular from 'angular';
 
 // Built by the core Angular team for mocking dependencies
 import mocks from 'angular-mocks';
+// import sinonChai from "sinon-chai";
 
 // We use the context method on `require` which Webpack created
 // in order to signify which files we actually want to require or import.

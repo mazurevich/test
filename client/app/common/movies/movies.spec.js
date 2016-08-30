@@ -1,23 +1,17 @@
 // specs here
-import MovieFactory from './movies.factory'
+import MovieFactory from './movies.factory';
+import Movies from './movies';
 
 describe('Testing movies service', function () {
 
   let $rootScope, $state, $location, movies,
-    $componentController, $compile, $http, $q, localStorageService;
+    $componentController, $compile, $http, $q, localStorageService, spy;
 
+  beforeEach(angular.mock.module(Movies));
 
-  beforeEach(window.module('movies'));
-
-  beforeEach(inject(($injector) => {
-    $rootScope = $injector.get('$rootScope');
-    $componentController = $injector.get('$componentController');
-    // $state = $injector.get('$state');
-    $location = $injector.get('$location');
-    $compile = $injector.get('$compile');
-    $http = $injector.get('$http');
-    $q = $injector.get('$q');
-
+  beforeEach(inject((_$http_, _$q_) => {
+    $http = _$http_;
+    $http = _$q_;
     localStorageService = {
       set(a, b){
 
@@ -37,44 +31,73 @@ describe('Testing movies service', function () {
     };
 
     movies = MovieFactory($http, $q, localStorageService);
+    spyOn(localStorageService, 'set');
   }));
 
 
-  it('having getMovies() method', function () {
-    expect(movies).to.have.property('getMovies');
+  describe('testing interface', function () {
+    it('# addMovie() ', function () {
+      expect(movies.removeMovie).toBeDefined();
+    });
+    it('# removeMovie() ', function () {
+      expect(movies.removeMovie).toBeDefined();
+    });
+    it('# updateMovie() ', function () {
+      expect(movies.removeMovie).toBeDefined();
+    });
+    it('# contains() ', function () {
+      expect(movies.removeMovie).toBeDefined();
+    });
+    it('# getMovies() ', function () {
+      expect(movies.removeMovie).toBeDefined();
+    });
+    it('# getMovieById() ', function () {
+      expect(movies.removeMovie).toBeDefined();
+    });
+    it('# getMovieById() ', function () {
+      expect(movies.removeMovie).toBeDefined();
+    });
+    it('# getMovieFullInfo() ', function () {
+      expect(movies.removeMovie).toBeDefined();
+    });
+    it('total amount of methods', function () {
+      expect(Object.keys(movies).length).toEqual(8);
+    })
   });
 
-  it('getting data from localStorage', ()=> {
-    expect(movies.getMovies()[0].imdbID).to.be.equal('tt0096895');
-  });
 
-  it('addMovie() to add increase length of movies', ()=> {
-    let initialLen = localStorageService.get().length;
-    movies.addMovie({});
-    expect(movies.getMovies().length).to.be.equal(initialLen + 1);
-  });
+  describe('simple interactions', function () {
 
-  it('having removeMovie() method', function () {
-    expect(movies).to.have.property('removeMovie');
-  });
+    it('getting data from localStorage', ()=> {
+      expect(movies.getMovies()[0].imdbID).toEqual('tt0096895');
+    });
 
-  it('removeMovie() to decrease length of movies', ()=> {
-    let initialLen = localStorageService.get().length;
-    let m = localStorageService.get()[0];
-    movies.removeMovie(m);
-    expect(movies.getMovies().length).to.be.equal(initialLen - 1);
-  });
+    it('addMovie() increase length of movies', ()=> {
+      let initialLen = localStorageService.get().length;
+      movies.addMovie({});
 
-  it('having updateMovie() method', function () {
-    expect(movies).to.have.property('updateMovie');
-  });
+      expect(movies.getMovies().length).toEqual(initialLen + 1);
+      expect(localStorageService.set).toHaveBeenCalled();
+    });
 
-  it('updateMovie() to update of movies', ()=> {
-    let oldMovie = localStorageService.get()[0];
-    let newMovie = Object.assign({}, oldMovie);
-    newMovie.imdbID = "testId";
-    movies.updateMovie(oldMovie, newMovie);
-    expect(movies.getMovies()[0]).to.deep.equal(newMovie);
+    it('removeMovie() to decrease length of movies', ()=> {
+      let initialLen = localStorageService.get().length;
+      let m = localStorageService.get()[0];
+
+      movies.removeMovie(m);
+
+      expect(movies.getMovies().length).toEqual(initialLen - 1);
+      expect(localStorageService.set).toHaveBeenCalled();
+    });
+
+    it('updateMovie() to update of movies', ()=> {
+      let oldMovie = movies.getMovieById('tt0096895');
+      movies.updateMovie(oldMovie, {Type: 'newType'});
+
+      expect(movies.getMovieById('tt0096895').Type).toEqual('newType');
+      expect(localStorageService.set).toHaveBeenCalled();
+    });
   });
 
 });
+
